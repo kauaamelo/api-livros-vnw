@@ -9,11 +9,6 @@ def teste():
 
     return "<h1>Olá VNW!</h1>"
 
-@app.route("/livros")
-def pagar_pessoas():
-
-    return "<h1>Olá mundo!</h1>"
-
 def init_db():
 
     with sqlite3.connect("livrosvnw.db") as connection:
@@ -38,7 +33,7 @@ def doar_livros():
     titulo = dados.get("titulo")
     categoria = dados.get("categoria")
     autor = dados.get("autor")
-    image_url = dados.get("imagem_url")
+    image_url = dados.get("image_url")
 
     if not titulo or not categoria or not autor or not image_url:
         return jsonify({"erro": "Todos os campos são obrigatórios"}),400
