@@ -45,7 +45,29 @@ def doar_livros():
         ''')
         connection.commit()
 
-        return jsonify({"Mensagem": "Livro cadastrado com sucesso"}), 201
+        return jsonify({"mensagem": "Livro cadastrado com sucesso"}), 201
+    
+@app.route("/livros", methods =["GET"])
+def listar_livros():
+
+    with sqlite3.connect("livrosvnw.db") as connection:
+        livros = connection.execute("SELECT * FROM LIVROS").fetchall()
+
+        livros_formatados = []
+
+        for item in livros:
+            dicionario = {
+            "id": item[0],
+            "titulo": item[1],
+            "categoria": item[2],
+            "autor": item[3],
+            "image_url": item[4]
+            }
+
+            livros_formatados.append(dicionario)
+
+        return jsonify(livros_formatados)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
