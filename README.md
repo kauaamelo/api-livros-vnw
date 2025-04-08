@@ -38,7 +38,7 @@ source venv/Scripts/activate     # Windows
 source venv/bin/activate         # Linux/Mac
 
 # 3. Instale as dependências
-pip install -r requirements.txt
+pip freeze > requirements.txt
 
 # 4. Execute o app
 python app.py
