@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -6,8 +6,7 @@ import sqlite3
 
 @app.route("/")
 def teste():
-
-    return "<h1>Olá VNW!</h1>"
+    return render_template("index.html")
 
 def init_db():
 
